@@ -1,0 +1,60 @@
+O objetivo deste trabalho é transformar um documento com informação denotada em XML num documento 
+com a informação descrita em ttl(turtle).
+
+Criação de um modelo/ontologia
+1.Domínio
+2.Determinar que tipos de coisas temos:
+-Bibliografia
+-Publicação
+    -grupos de informação
+
+
+Existem varios grupos de informação:
+ -> inbooks
+    - referencia de autor (1+);
+    - referencia de editor (1+);
+    - id de editor (1+);
+    - titulo;
+    - capitulo;
+    - paginas;
+    - publisher;
+    - ano;
+    - mes;
+    - doi(associado a um servidor que nos devolve o referido objeto- digital object identifier);
+    
+ -> inproceedings
+    - titulo;
+    - referencia de autor;
+    - titulo do livro;
+    - endereço;
+    - ano;
+    - mes;
+    - doi;
+
+ -> proceedings
+    - titulo;
+    - ano;
+    - referencia de editor;
+    - endereço;
+    - mes;
+    - doi;
+    - isbn;
+
+ -> articles
+    - titulo;
+    - referencia de autor;
+    - jornal;
+    - publisher;
+    - issn;
+    - ano;
+    - doi;
+
+-> MISC
+
+-> BOOK
+
+-> MasterThesis
+
+->PhdThesis
+
+->Pessoa(Editor ou Autor)
