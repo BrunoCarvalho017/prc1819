@@ -1,0 +1,212 @@
+@prefix : <http://www.prc1819.com/turismo#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.prc1819.com/turismo> .
+
+<http://www.prc1819.com/turismo> rdf:type owl:Ontology ;
+                                  rdfs:comment """Um ontologia sobre o turismo em Braga;
+TPC3""" .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.prc1819.com/turismo#temAtração
+:temAtração rdf:type owl:ObjectProperty ;
+            rdfs:domain :Passeio_Turístico ;
+            rdfs:range :Atração .
+
+
+###  http://www.prc1819.com/turismo#temDistância
+:temDistância rdf:type owl:ObjectProperty ;
+              rdfs:domain :Passeio_Turístico ;
+              rdfs:range :Distância .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.prc1819.com/turismo#distância
+:distância rdf:type owl:DatatypeProperty .
+
+
+###  http://www.prc1819.com/turismo#endereço
+:endereço rdf:type owl:DatatypeProperty .
+
+
+###  http://www.prc1819.com/turismo#horario
+:horario rdf:type owl:DatatypeProperty .
+
+
+###  http://www.prc1819.com/turismo#nome
+:nome rdf:type owl:DatatypeProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.prc1819.com/turismo#Atração
+:Atração rdf:type owl:Class .
+
+
+###  http://www.prc1819.com/turismo#Distância
+:Distância rdf:type owl:Class .
+
+
+###  http://www.prc1819.com/turismo#Hotel
+:Hotel rdf:type owl:Class ;
+       rdfs:subClassOf :Infraestrutura .
+
+
+###  http://www.prc1819.com/turismo#Infraestrutura
+:Infraestrutura rdf:type owl:Class .
+
+
+###  http://www.prc1819.com/turismo#Local
+:Local rdf:type owl:Class ;
+       rdfs:subClassOf :Atração .
+
+
+###  http://www.prc1819.com/turismo#Museu
+:Museu rdf:type owl:Class ;
+       rdfs:subClassOf :Atração .
+
+
+###  http://www.prc1819.com/turismo#Passeio_Turístico
+:Passeio_Turístico rdf:type owl:Class ;
+                   owl:equivalentClass [ rdf:type owl:Restriction ;
+                                         owl:onProperty :temAtração ;
+                                         owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                         owl:onClass :Atração
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :temDistância ;
+                                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                         owl:onClass :Distância
+                                       ] .
+
+
+###  http://www.prc1819.com/turismo#Restaurante
+:Restaurante rdf:type owl:Class ;
+             rdfs:subClassOf :Infraestrutura .
+
+
+###  http://www.prc1819.com/turismo#Transporte
+:Transporte rdf:type owl:Class ;
+            rdfs:subClassOf :Infraestrutura .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.prc1819.com/turismo#BomJesus
+:BomJesus rdf:type owl:NamedIndividual ,
+                   :Local ;
+          :endereço "Estrada do Bom Jesus, 4715-056 Tenões" ;
+          :horario "Sempre Aberto" ;
+          :nome "Bom Jesus do Monte" .
+
+
+###  http://www.prc1819.com/turismo#Castelo_de_Guimarães
+:Castelo_de_Guimarães rdf:type owl:NamedIndividual ,
+                               :Local ;
+                      :endereço "R. Conde Dom Henrique, Guimarães" ;
+                      :horario "9h-18h" ;
+                      :nome "Castelo de Guimarães" .
+
+
+###  http://www.prc1819.com/turismo#FonteIdolo
+:FonteIdolo rdf:type owl:NamedIndividual ,
+                     :Local ;
+            :endereço "R. Raio 379, 4700-924 Braga" ;
+            :horario """9h-13h
+14h-18h""" ;
+            :nome "Fonte do Ídolo" .
+
+
+###  http://www.prc1819.com/turismo#JardimSantaBárbara
+:JardimSantaBárbara rdf:type owl:NamedIndividual ,
+                             :Local ;
+                    :endereço "R. Dr. Justino Cruz 127, 4700-314 Braga" ;
+                    :horario "Aberto 24h" ;
+                    :nome "Jardim de Santa Bárbara" .
+
+
+###  http://www.prc1819.com/turismo#MosteiroTibães
+:MosteiroTibães rdf:type owl:NamedIndividual ,
+                         :Museu ;
+                :endereço "Rua do Mosteiro, 4700-565 Mire de Tibães, Braga, 4700-565 Mire de Tibães" ;
+                :nome "Mosteiro dos Tibães" .
+
+
+###  http://www.prc1819.com/turismo#MuseuArqueologia
+:MuseuArqueologia rdf:type owl:NamedIndividual ,
+                           :Museu ;
+                  :endereço "R. dos Bombeiros Voluntários s/n, 4700-025 Braga" ;
+                  :horario """9h-13h
+14-17:30h""" ;
+                  :nome "Museu de Arqueologia D. Diogo de Sousa" .
+
+
+###  http://www.prc1819.com/turismo#MuseuBiscainhos
+:MuseuBiscainhos rdf:type owl:NamedIndividual ,
+                          :Museu ;
+                 :endereço "R. dos Biscaínhos s/n, 4700-415 Braga" ;
+                 :horario """9h-13h
+14h-18h""" ;
+                 :nome "Museu dos Biscainhos" .
+
+
+###  http://www.prc1819.com/turismo#PalácioRaio
+:PalácioRaio rdf:type owl:NamedIndividual ,
+                      :Museu ;
+             :endereço "Braga Norte 920, 4700-327 Braga" ;
+             :horario """9h-13h
+14:30-18h""" ;
+             :nome "Palácio do Raio" .
+
+
+###  http://www.prc1819.com/turismo#PasseioTuristico1
+:PasseioTuristico1 rdf:type owl:NamedIndividual ;
+                   :temAtração :BomJesus ,
+                               :MuseuBiscainhos ,
+                               :PalácioRaio ;
+                   :temDistância :dis1 .
+
+
+###  http://www.prc1819.com/turismo#SantuárioSameiro
+:SantuárioSameiro rdf:type owl:NamedIndividual ,
+                           :Local ;
+                  :endereço "Av. Nossa Sra. do Sameiro 44, 4715-616 Braga" ;
+                  :horario "Aberto 24h" ;
+                  :nome "Santuário do Sameiro" .
+
+
+###  http://www.prc1819.com/turismo#Sé_de_Braga
+:Sé_de_Braga rdf:type owl:NamedIndividual ,
+                      :Local ;
+             :endereço "R. Dom Paio Mendes, 4700-424 Braga" ;
+             :nome "Sé de Braga" .
+
+
+###  http://www.prc1819.com/turismo#TermasRomanas
+:TermasRomanas rdf:type owl:NamedIndividual ,
+                        :Local ;
+               :endereço """9h-13h
+14h-18h""" ,
+                         "R. Dr. Rocha Peixoto 13, 4700-043 Braga" ;
+               :nome "Termas Romanas de Maximinos" .
+
+
+###  http://www.prc1819.com/turismo#dis1
+:dis1 rdf:type owl:NamedIndividual ;
+      :distância "2km" .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
