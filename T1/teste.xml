@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bibliography xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="bibtex.xsd">
+	
+	<inbook id="IGI2013">
+		<author-ref authorid="rf"/>
+		<author-ref authorid="jcr"/>
+		<editor-ref authorid="jcr"/>
+		<editor-ref authorid="albie"/>	
+		<editor id="rq">Ricardo Queirós</editor>
+		<title>Innovations in XML Applications and Metadata Management: Advancing Technologies</title>
+		<chapter>New Dimension in Relational Database Preservation: Using Ontologies</chapter>
+		<pages>160-173</pages>
+		<publisher>IGI Global</publisher>
+		<year>2013</year>
+		<month>06</month>
+		<doi>10.4018/978-1-4666-2669-0.ch009</doi>
+	</inbook>
+	
+	<inbook id="Ram99b">
+		<author-ref authorid="jcr"/>
+		<title>EINE'99 - II Escola de Informática da Sociedade Brasileira de Computação</title>
+		<chapter>Extensible Markup Language (XML)- A promessa e a esperança?...</chapter>
+		<pages>49-76</pages>
+		<publisher>Sociedade Brasileira de Computação (SBC)</publisher>
+		<year>1999</year>
+		<month>11.23-26</month>
+	</inbook>
+	
+	<inproceedings id="RH98b">
+		<author-ref authorid="jcr"/>
+		<author-ref authorid="prh"/>
+		<title>Qualidade na Publicação Electrónica: como controlá-la?</title>
+		<booktitle>Quatic 98: III Encontro Nacional para a Qualidade nas Tecnologias da Informação e
+			Comunicação</booktitle>
+		<year>1998</year>
+		<address>Guimarães - Portugal</address>
+		<deliverables>
+			<doc url="http://www.di.uminho.pt/~jcr/XML/publicacoes/artigos/1998/RH98-Quatic.rtf"/>
+			<ppt url="http://www.di.uminho.pt/~jcr/XML/publicacoes/artigos/1998/RH98-Quatic-slides.rtf"/>
+		</deliverables>
+	</inproceedings>
+	
+	<inproceedings id="VECPAR93">
+		<author-ref authorid="hs"/>
+		<author-ref authorid="jcr"/>
+		<author-ref authorid="jmf"/>
+		<author-ref authorid="ajp"/>
+		<title>A Heterogeneous Computer Vision Architecture: Implementation Issues</title>
+		<booktitle>1st International Meeting on Vector and Paralell Processing</booktitle>
+		<year>1993</year>
+	</inproceedings>
+	
+	<misc id="Ram98">
+		<author-ref authorid="jcr"/>
+		<title>Tutorial: Documentação Estruturada - Será que a minha empresa deve migrar para uma tecnologia baseada em SGML?</title>
+		<howpublished>tutorial at Terceiro Encontro Nacional para a Qualidade nas tecnologias de
+			informação e comunicação, Guimarães - Portugal</howpublished>
+		<year>1998</year>
+	</misc>
+	
+	<article id="SRFP95">
+		<author id="hs">H. Santos</author>
+		<author-ref authorid="jcr"/>
+		<author id="jmf">J. M. Fernandes</author>
+		<author id="ajp">A. J. Proença</author>
+		<title>A Heterogeneous Computer Vision Architecture: Implementation Issues</title>
+		<journal>Computing Systems in Engineering</journal>
+		<year>1995</year>
+		<volume>volume 6, número 4/5, páginas 401-408</volume>
+	</article>
+	
+	<masterthesis id="Ram93">
+		<author-ref authorid="jcr"/>
+		<title>Um Compilador para o GLiTCH</title>
+		<school>Escola de Engenharia - Universidade do Minho</school>
+		<year>1993</year>
+		<month>10</month>
+	</masterthesis>
+	
+	<phdthesis id="Ram2000">
+		<author-ref authorid="jcr"/>
+		<title>Anotação Estrutural de Documentos e sua Semântica</title>
+		<school>Tese de Doutoramento</school>
+		<year>2000</year>
+		<address>Universidade do Minho</address>
+		<month>07</month>
+		<deliverables>
+			<xhtml url="teses/phd-jcr/src/book1.htm"/>
+		</deliverables>
+		<doi> http://hdl.handle.net/1822/5625</doi>
+	</phdthesis>
+	
+	<book id="RH2002">
+		<author id="jcr">José Carlos Ramalho</author>
+		<author id="prh">Pedro Rangel Henriques</author>
+		<title>XML e XSL: da teoria à prática</title>
+		<publisher>Colecção Tecnologias da Informação</publisher>
+		<year>2002</year>
+		<address>FCA - Editora de Informática</address>
+		<month>11</month>
+		<deliverables>
+			<xhtml url="http://www.di.uminho.pt/~jcr/XML/publicacoes/livros/fca2002/index.htm"/>
+		</deliverables>
+	</book>
+</bibliography>

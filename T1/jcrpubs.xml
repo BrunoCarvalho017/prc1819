@@ -1317,7 +1317,7 @@ Informática (CLEI2004)</booktitle>
 	</inproceedings>
 	
 	<inbook id="RLH06">
-		<author-ref authorid="jcr"></author-ref>
+		<author-ref authorid="jcr"/>
 		<author-ref authorid="grl"/>
 		<author-ref authorid="prh"/>
 		<editor id="lutz">Lutz Maicher</editor>

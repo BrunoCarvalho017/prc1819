@@ -10,7 +10,7 @@ Criação de um modelo/ontologia
 
 
 Existem varios grupos de informação:
- -> inbooks
+ -> inbooks(done)
     - referencia de autor (1+);
     - referencia de editor (1+);
     - id de editor (1+);
@@ -22,7 +22,7 @@ Existem varios grupos de informação:
     - mes;
     - doi(associado a um servidor que nos devolve o referido objeto- digital object identifier);
     
- -> inproceedings
+ -> inproceedings(...)
     - titulo;
     - referencia de autor;
     - titulo do livro;
