@@ -1,0 +1,454 @@
+@prefix : <http://www.prc1819.com/arquivo#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.prc1819.com/arquivo> .
+
+<http://www.prc1819.com/arquivo> rdf:type owl:Ontology ;
+                                  rdfs:comment "Ontologia para arquivo musical" .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.prc1819.com/arquivo#escreveuObra
+:escreveuObra rdf:type owl:ObjectProperty ;
+              owl:inverseOf :temCompositor .
+
+
+###  http://www.prc1819.com/arquivo#participaEmObra
+:participaEmObra rdf:type owl:ObjectProperty ;
+                 owl:inverseOf :temPartituraInstrumento .
+
+
+###  http://www.prc1819.com/arquivo#temCompositor
+:temCompositor rdf:type owl:ObjectProperty ;
+               rdfs:domain :Obra ;
+               rdfs:range :Compositor .
+
+
+###  http://www.prc1819.com/arquivo#temObra
+:temObra rdf:type owl:ObjectProperty ;
+         rdfs:domain :Evento ;
+         rdfs:range :Obra .
+
+
+###  http://www.prc1819.com/arquivo#temPartituraInstrumento
+:temPartituraInstrumento rdf:type owl:ObjectProperty ;
+                         rdfs:domain :Obra ;
+                         rdfs:range :Instrumento .
+
+
+###  http://www.prc1819.com/arquivo#temTipo
+:temTipo rdf:type owl:ObjectProperty ;
+         rdfs:domain :Obra ;
+         rdfs:range :Tipo .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.prc1819.com/arquivo#data
+:data rdf:type owl:DatatypeProperty ;
+      rdfs:domain :Evento .
+
+
+###  http://www.prc1819.com/arquivo#dataNascimento
+:dataNascimento rdf:type owl:DatatypeProperty ;
+                rdfs:domain :Compositor .
+
+
+###  http://www.prc1819.com/arquivo#duracao
+:duracao rdf:type owl:DatatypeProperty ;
+         rdfs:domain :Obra .
+
+
+###  http://www.prc1819.com/arquivo#id
+:id rdf:type owl:DatatypeProperty ;
+    rdfs:domain :Compositor ,
+                :Evento ,
+                :Instrumento ,
+                :Obra .
+
+
+###  http://www.prc1819.com/arquivo#local
+:local rdf:type owl:DatatypeProperty ;
+       rdfs:domain :Evento .
+
+
+###  http://www.prc1819.com/arquivo#nome
+:nome rdf:type owl:DatatypeProperty ;
+      rdfs:domain :Compositor ,
+                  :Evento ,
+                  :Instrumento .
+
+
+###  http://www.prc1819.com/arquivo#tipo
+:tipo rdf:type owl:DatatypeProperty ;
+      rdfs:domain :Obra ;
+      rdfs:range [ rdf:type rdfs:Datatype ;
+                   owl:oneOf [ rdf:type rdf:List ;
+                               rdf:first "Marcha Concerto" ;
+                               rdf:rest [ rdf:type rdf:List ;
+                                          rdf:first "Marcha Desfile" ;
+                                          rdf:rest [ rdf:type rdf:List ;
+                                                     rdf:first "Marcha Procissão" ;
+                                                     rdf:rest rdf:nil
+                                                   ]
+                                        ]
+                             ]
+                 ] .
+
+
+###  http://www.prc1819.com/arquivo#titulo
+:titulo rdf:type owl:DatatypeProperty ;
+        rdfs:domain :Obra .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.prc1819.com/arquivo#Compositor
+:Compositor rdf:type owl:Class .
+
+
+###  http://www.prc1819.com/arquivo#Evento
+:Evento rdf:type owl:Class .
+
+
+###  http://www.prc1819.com/arquivo#Instrumento
+:Instrumento rdf:type owl:Class .
+
+
+###  http://www.prc1819.com/arquivo#Ligeiro
+:Ligeiro rdf:type owl:Class ;
+         owl:equivalentClass [ owl:intersectionOf ( :Obra
+                                                    [ rdf:type owl:Restriction ;
+                                                      owl:onProperty :temTipo ;
+                                                      owl:hasValue :tp_ligeiro
+                                                    ]
+                                                  ) ;
+                               rdf:type owl:Class
+                             ] ;
+         rdfs:subClassOf :Obra .
+
+
+###  http://www.prc1819.com/arquivo#Marcha
+:Marcha rdf:type owl:Class ;
+        rdfs:subClassOf :Obra .
+
+
+###  http://www.prc1819.com/arquivo#MarchaConcerto
+:MarchaConcerto rdf:type owl:Class ;
+                owl:equivalentClass [ owl:intersectionOf ( :Marcha
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty :temTipo ;
+                                                             owl:hasValue :tp_concerto
+                                                           ]
+                                                         ) ;
+                                      rdf:type owl:Class
+                                    ] ;
+                rdfs:subClassOf :Marcha .
+
+
+###  http://www.prc1819.com/arquivo#MarchaDesfile
+:MarchaDesfile rdf:type owl:Class ;
+               owl:equivalentClass [ owl:intersectionOf ( :Marcha
+                                                          [ rdf:type owl:Restriction ;
+                                                            owl:onProperty :temTipo ;
+                                                            owl:hasValue :tp_desfile
+                                                          ]
+                                                        ) ;
+                                     rdf:type owl:Class
+                                   ] ;
+               rdfs:subClassOf :Marcha .
+
+
+###  http://www.prc1819.com/arquivo#MarchaProcissão
+:MarchaProcissão rdf:type owl:Class ;
+                 owl:equivalentClass [ owl:intersectionOf ( :Marcha
+                                                            [ rdf:type owl:Restriction ;
+                                                              owl:onProperty :temTipo ;
+                                                              owl:hasValue :tp_procissao
+                                                            ]
+                                                          ) ;
+                                       rdf:type owl:Class
+                                     ] ;
+                 rdfs:subClassOf :Marcha .
+
+
+###  http://www.prc1819.com/arquivo#Obra
+:Obra rdf:type owl:Class .
+
+
+###  http://www.prc1819.com/arquivo#Rapsódia
+:Rapsódia rdf:type owl:Class ;
+          owl:equivalentClass [ owl:intersectionOf ( :Obra
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty :temTipo ;
+                                                       owl:hasValue :tp_rapsodia
+                                                     ]
+                                                   ) ;
+                                rdf:type owl:Class
+                              ] ;
+          rdfs:subClassOf :Obra .
+
+
+###  http://www.prc1819.com/arquivo#Tipo
+:Tipo rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.prc1819.com/arquivo#comp2
+:comp2 rdf:type owl:NamedIndividual ;
+       :dataNascimento "1950-10-10" ;
+       :nome "Alexandre Fonseca" .
+
+
+###  http://www.prc1819.com/arquivo#comp3
+:comp3 rdf:type owl:NamedIndividual ;
+       :dataNascimento "1972-10-10" ;
+       :nome "Meredith Wilson" .
+
+
+###  http://www.prc1819.com/arquivo#comp4
+:comp4 rdf:type owl:NamedIndividual ;
+       :dataNascimento "1977-10-10" ;
+       :nome "Luís Cardoso" .
+
+
+###  http://www.prc1819.com/arquivo#comp5
+:comp5 rdf:type owl:NamedIndividual ;
+       :dataNascimento "1956-10-10" ;
+       :nome "Valdemar Sequeira" .
+
+
+###  http://www.prc1819.com/arquivo#comp6
+:comp6 rdf:type owl:NamedIndividual ;
+       :dataNascimento "1960-10-10" ;
+       :nome "Alberto Madureira" .
+
+
+###  http://www.prc1819.com/arquivo#ev1
+:ev1 rdf:type owl:NamedIndividual ;
+     :temObra :m18 ,
+              :m28 ,
+              :m30 ,
+              :m47 ,
+              :m7 ;
+     :data "2018-06-10" ;
+     :id "ev1" ;
+     :local "Vila Verde" ;
+     :nome "Festas de Santo António" .
+
+
+###  http://www.prc1819.com/arquivo#ev2
+:ev2 rdf:type owl:NamedIndividual ;
+     :temObra :m28 ,
+              :m30 ,
+              :m47 ,
+              :m7 ;
+     :data "2018-12-17" ;
+     :id "ev2" ;
+     :local "Vila de Prado" ;
+     :nome "Concerto de Natal" .
+
+
+###  http://www.prc1819.com/arquivo#ev3
+:ev3 rdf:type owl:NamedIndividual ;
+     :temObra :m18 ,
+              :m30 ;
+     :data "2018-04-22" ;
+     :id "ev3" ;
+     :local "Amares" ;
+     :nome "Pascoa" .
+
+
+###  http://www.prc1819.com/arquivo#ev4
+:ev4 rdf:type owl:NamedIndividual ;
+     :temObra :m28 ,
+              :m47 ;
+     :data "2018-10-13" ;
+     :id "ev4" ;
+     :local "Vila Verde" ;
+     :nome "Festa das Colheitas" .
+
+
+###  http://www.prc1819.com/arquivo#inst1
+:inst1 rdf:type owl:NamedIndividual ;
+       :id "inst1" ;
+       :nome "Caixa" .
+
+
+###  http://www.prc1819.com/arquivo#inst10
+:inst10 rdf:type owl:NamedIndividual ;
+        :id "inst10" ;
+        :nome "Fagote" .
+
+
+###  http://www.prc1819.com/arquivo#inst2
+:inst2 rdf:type owl:NamedIndividual ;
+       :id "inst2" ;
+       :nome "Clarinete" .
+
+
+###  http://www.prc1819.com/arquivo#inst3
+:inst3 rdf:type owl:NamedIndividual ;
+       :id "inst3" ;
+       :nome "Flauta" .
+
+
+###  http://www.prc1819.com/arquivo#inst4
+:inst4 rdf:type owl:NamedIndividual ;
+       :id "inst4" ;
+       :nome "Saxofone" .
+
+
+###  http://www.prc1819.com/arquivo#inst5
+:inst5 rdf:type owl:NamedIndividual ;
+       :id "inst5" ;
+       :nome "Tuba" .
+
+
+###  http://www.prc1819.com/arquivo#inst6
+:inst6 rdf:type owl:NamedIndividual ;
+       :id "inst6" ;
+       :nome "Trombone" .
+
+
+###  http://www.prc1819.com/arquivo#inst7
+:inst7 rdf:type owl:NamedIndividual ;
+       :id "inst7" ;
+       :nome "Trompete" .
+
+
+###  http://www.prc1819.com/arquivo#inst8
+:inst8 rdf:type owl:NamedIndividual ;
+       :id "inst8" ;
+       :nome "Bateria" .
+
+
+###  http://www.prc1819.com/arquivo#inst9
+:inst9 rdf:type owl:NamedIndividual ;
+       :id "inst9" ;
+       :nome "Oboé" .
+
+
+###  http://www.prc1819.com/arquivo#m18
+:m18 rdf:type owl:NamedIndividual ;
+     :temCompositor :comp2 ;
+     :temPartituraInstrumento :inst1 ,
+                              :inst2 ,
+                              :inst3 ,
+                              :inst4 ,
+                              :inst5 ,
+                              :inst6 ,
+                              :inst7 ;
+     :temTipo :tp_desfile ;
+     :duracao 12 ;
+     :id "m18" ;
+     :titulo "12 de Abril" .
+
+
+###  http://www.prc1819.com/arquivo#m28
+:m28 rdf:type owl:NamedIndividual ;
+     :temCompositor :comp4 ;
+     :temPartituraInstrumento :inst1 ,
+                              :inst10 ,
+                              :inst2 ,
+                              :inst3 ,
+                              :inst4 ,
+                              :inst5 ,
+                              :inst6 ,
+                              :inst7 ,
+                              :inst8 ,
+                              :inst9 ;
+     :temTipo :tp_ligeiro ;
+     :duracao 18 ;
+     :id "m28" ;
+     :titulo "Abba Mia" .
+
+
+###  http://www.prc1819.com/arquivo#m30
+:m30 rdf:type owl:NamedIndividual ;
+     :temCompositor :comp3 ;
+     :temPartituraInstrumento :inst2 ,
+                              :inst3 ,
+                              :inst4 ,
+                              :inst5 ,
+                              :inst6 ,
+                              :inst7 ,
+                              :inst8 ,
+                              :inst9 ;
+     :temTipo :tp_concerto ;
+     :duracao 15 ;
+     :id "m30" ;
+     :titulo "76 Trombones" .
+
+
+###  http://www.prc1819.com/arquivo#m47
+:m47 rdf:type owl:NamedIndividual ;
+     :temCompositor :comp5 ;
+     :temPartituraInstrumento :inst1 ,
+                              :inst2 ,
+                              :inst3 ,
+                              :inst4 ,
+                              :inst5 ,
+                              :inst6 ,
+                              :inst7 ,
+                              :inst8 ;
+     :temTipo :tp_rapsodia ;
+     :duracao 22 ;
+     :id "m47" ;
+     :titulo "Bailar na Nespereira" .
+
+
+###  http://www.prc1819.com/arquivo#m7
+:m7 rdf:type owl:NamedIndividual ;
+    :temCompositor :comp6 ;
+    :temPartituraInstrumento :inst1 ,
+                             :inst2 ,
+                             :inst3 ,
+                             :inst4 ,
+                             :inst5 ,
+                             :inst6 ,
+                             :inst7 ;
+    :temTipo :tp_procissao ;
+    :duracao 19 ;
+    :id "m7" ;
+    :titulo "Avé Maria" .
+
+
+###  http://www.prc1819.com/arquivo#tp_concerto
+:tp_concerto rdf:type owl:NamedIndividual ,
+                      :Tipo .
+
+
+###  http://www.prc1819.com/arquivo#tp_desfile
+:tp_desfile rdf:type owl:NamedIndividual ,
+                     :Tipo .
+
+
+###  http://www.prc1819.com/arquivo#tp_ligeiro
+:tp_ligeiro rdf:type owl:NamedIndividual ,
+                     :Tipo .
+
+
+###  http://www.prc1819.com/arquivo#tp_procissao
+:tp_procissao rdf:type owl:NamedIndividual ,
+                       :Tipo .
+
+
+###  http://www.prc1819.com/arquivo#tp_rapsodia
+:tp_rapsodia rdf:type owl:NamedIndividual ,
+                      :Tipo .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi

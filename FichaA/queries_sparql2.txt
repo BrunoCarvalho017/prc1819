@@ -1,0 +1,71 @@
+---1
+
+select ?n ?d where { 
+	?c a :Compositor;
+    	:dataNascimento ?d;
+     	:nome ?n.
+}
+
+---2
+
+select ?t where { 
+    ?o a :Obra;
+       :temCompositor ?c;
+       :titulo ?t.
+	?c a :Compositor;
+    	:nome "Valdemar Sequeira".
+} 
+
+---3
+
+select (count(*) as ?quantObra) where { 
+    ?o a :Obra.
+} 
+
+---4
+
+select (count(*) as ?quantPart) where { 
+    ?o a :Obra;
+       :temPartituraInstrumento ?p.
+} 
+
+---5
+
+select ?o where { 
+    ?o a :Obra;
+       :duracao ?duracao.
+} 
+ORDER BY DESC(?duracao) LIMIT 1
+
+---6
+
+select ?nomeEvento (sum(?duracao) as ?duracao) where { 
+    ?e a :Evento;
+       :nome ?nomeEvento;
+       :temObra ?obra .
+    ?obra :duracao ?duracao.
+    
+} GROUP BY ?nomeEvento
+
+---8
+
+select (count(*) as ?qntMarcha) where { 
+    ?o a :Marcha.
+} 
+
+---9
+
+select ?o where { 
+    ?o a :Marcha;
+       :duracao ?duracao.
+} ORDER BY  DESC(?duracao) LIMIT 1
+
+---10
+
+select ?nome where { 
+    ?e a :Evento;
+       :nome ?nome;
+       :data ?data; 
+       
+       FILTER (?data > NOW())
+} 

@@ -1,0 +1,72 @@
+---1
+
+SELECT count(*) WHERE {
+	?r a dbo:River .
+}
+
+---2
+
+SELECT count(*) WHERE {
+  ?r a dbo:River ;
+     dbo:sourceCountry dbr:Portugal.
+ }
+
+---3
+
+SELECT ?dname, ?rname WHERE {
+  ?r a dbo:River ;
+      dbo:sourceCountry dbr:Portugal ;
+      dbpedia2:sourceDistrict ?d .
+  ?d foaf:name ?dname.
+  ?r dbp:name ?rname.
+ }
+
+
+---4
+
+SELECT count(*) WHERE {
+	{
+		?r 	a dbo:River ;
+         	dbo:sourceCountry dbr:Portugal. 
+    }
+	UNION 
+	{
+ 		?r 	a yago:WikicatRiversOfPortugal ;
+         	dbo:sourceCountry dbr:Portugal. 
+	}
+}
+
+SELECT ?dname, ?rname WHERE { 
+	{
+    	  ?r a dbo:River ;
+      dbo:sourceCountry dbr:Portugal ;
+      dbpedia2:sourceDistrict ?d .
+  ?d foaf:name ?dname.
+  ?r dbp:name ?rname.    }
+	UNION 
+	{
+ 		  ?r a yago:WikicatRiversOfPortugal ;
+      dbo:sourceCountry dbr:Portugal ;
+      dbpedia2:sourceDistrict ?d .
+  ?d foaf:name ?dname.
+  ?r dbp:name ?rname. 
+	}
+}
+
+---5
+
+SELECT count(*) WHERE {
+	{
+		?r 	a dbo:River ;
+         	dbo:sourceCountry dbr:Portugal;
+         	dbpedia2:sourceDistrict ?d .
+  			?d foaf:name "Braga". 
+    }
+	UNION 
+	{
+ 		?r 	a yago:WikicatRiversOfPortugal ;
+         	dbo:sourceCountry dbr:Portugal ;
+         	dbpedia2:sourceDistrict ?d .
+  			?d foaf:name "Braga".
+	}
+}
